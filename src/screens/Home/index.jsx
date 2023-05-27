@@ -16,20 +16,13 @@ import Icone2 from "@assets/icon-home2.png";
 import { Button } from "@components/Button";
 
 export function Home({ navigation }) {
-
-  function aboutUs(){
-    navigation.navigate('aboutus')
+  function aboutUs() {
+    navigation.navigate("aboutus");
   }
 
   return (
     <VStack flex={1}>
-  
-      <ImageBackground
-        source={require("@assets/background.png")}
-        style={{ flexGrow: 1 }}
-        resizeMode="cover"
-      >
-            <Image
+      <Image
         w={"full"}
         h={"56"}
         source={Icone1}
@@ -39,51 +32,55 @@ export function Home({ navigation }) {
         left={-100}
         resizeMode="contain"
       />
-        <Center pt={`20`}>
-          <Logo />
-        </Center>
-        <VStack flex={1} px={"12"} py={"8"}>
-          <HStack justifyContent={"space-between"} mb={16}>
-          
-            <Button2 bg={"transparent"}  >
-              <Text color={'gray.100'} fontSize={"lg"}>Home</Text>
-            </Button2>
-            <Button2 bg={"transparent"} onPress={aboutUs}>
-              <Text color={'gray.300'} fontSize={"lg"}>Sobre nós</Text>
-            </Button2>
-            <Button2 bg={"transparent"}  >
-              <Text color={'gray.300'} fontSize={"lg"}>Contato</Text>
-            </Button2>
-          </HStack>
-          <Text color={"#fff"} fontSize={"xxl"} textAlign={`center`}>
-            List de Skins – Todos os Personagens e Roupas!
-          </Text>
-          <Text color={"#71808C"} fontSize={"xl"} mt={"6"} textAlign={"center"}>
-            Se você está procurando uma lista completa de todos os Skins, então
-            você veio ao lugar certo.
-          </Text>
-          <Center>
-            <Button
-              title="COMEÇAR AGORA"
-              mt={"100"}
-              fontSize={"21"}
-              variant={"outline"}
-              onPress={() => navigation.navigate("signin")}
-            />
-          </Center>
-
-          <Image
-            w={"full"}
-            h={"40"}
-            source={Icone2}
-            alt="Icon2"
-            position={"absolute"}
-            top={560}
-            right={-50}
-            resizeMode="contain"
+      <Center pt={`20`}>
+        <Logo />
+      </Center>
+      <VStack flex={1} px={"12"} py={"8"}>
+        <HStack justifyContent={"space-between"} mb={16}>
+          <Button2 bg={"transparent"}>
+            <Text color={"gray.100"} fontSize={"lg"}>
+              Home
+            </Text>
+          </Button2>
+          <Button2 bg={"transparent"} onPress={aboutUs}>
+            <Text color={"gray.300"} fontSize={"lg"}>
+              Sobre nós
+            </Text>
+          </Button2>
+          <Button2 bg={"transparent"}>
+            <Text color={"gray.300"} fontSize={"lg"}>
+              Contato
+            </Text>
+          </Button2>
+        </HStack>
+        <Text color={"#fff"} fontSize={"xxl"} textAlign={`center`}>
+          List de Skins – Todos os Personagens e Roupas!
+        </Text>
+        <Text color={"#71808C"} fontSize={"xl"} mt={"6"} textAlign={"center"}>
+          Se você está procurando uma lista completa de todos os Skins, então
+          você veio ao lugar certo.
+        </Text>
+        <Center>
+          <Button
+            title="COMEÇAR AGORA"
+            mt={"100"}
+            fontSize={"21"}
+            variant={"outline"}
+            onPress={() => navigation.navigate("signin")}
           />
-        </VStack>
-      </ImageBackground>
+        </Center>
+
+        <Image
+          w={"full"}
+          h={"40"}
+          source={Icone2}
+          alt="Icon2"
+          position={"absolute"}
+          top={560}
+          right={-50}
+          resizeMode="contain"
+        />
+      </VStack>
     </VStack>
   );
 }
