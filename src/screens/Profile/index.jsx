@@ -13,7 +13,7 @@ import { Entypo, MaterialIcons } from "@expo/vector-icons";
 
 import Logo from "@assets/logo-min.svg";
 
-export function Skin({ navigation }) {
+export function Profile({ navigation }) {
   function goBackPage() {
     navigation.navigate("home");
   }
@@ -25,87 +25,124 @@ export function Skin({ navigation }) {
         style={{ flexGrow: 1 }}
         resizeMode="cover"
       >
+        <HStack
+          mt={20}
+          justifyContent={"space-between"}
+          mb={"4"}
+          pr={"3"}
+          alignItems={"center"}
+        >
+          <IconButton
+            icon={<Icon as={Entypo} name="chevron-small-left" />}
+            borderRadius="full"
+            _icon={{
+              color: "gray.100",
+              size: "12",
+            }}
+            _hover={{
+              bg: "orange.600:alpha.20",
+            }}
+            _pressed={{
+              bg: "gray.600:alpha.20",
+            }}
+            onPress={(e) => goBackPage(e)}
+          />
+          <Text color={"gray.100"} fontFamily={"heading"} fontSize={"3xl"}>
+            Meu Perfil
+          </Text>
+          <Logo />
+        </HStack>
+        <VStack>
+          <Center>
+            <Image
+              source={require("@assets/nathan.png")}
+              size={"lg"}
+              alt={"ola"}
+              rounded={"full"}
+              resizeMode="cover"
+            />
+
+            <Text
+              color={"gray.100"}
+              fontFamily={"heading"}
+              fontSize={"xl"}
+              pt={2}
+            >
+              Nathan Palatin
+            </Text>
+            <Text color={"gray.300"} fontFamily={"body"} fontSize={"xl"}>
+              Pro Gamer
+            </Text>
+          </Center>
+        </VStack>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }}
           showsVerticalScrollIndicator={false}
         >
           <HStack
-            mt={20}
+            mt={10}
             justifyContent={"space-between"}
-            mb={"4"}
-            pr={"3"}
+            mb={8}
+            px={10}
             alignItems={"center"}
           >
-            <IconButton
-              icon={<Icon as={Entypo} name="chevron-small-left" />}
-              borderRadius="full"
-              _icon={{
-                color: "gray.100",
-                size: "12",
-              }}
-              _hover={{
-                bg: "orange.600:alpha.20",
-              }}
-              _pressed={{
-                bg: "gray.600:alpha.20",
-              }}
-              onPress={(e) => goBackPage(e)}
-            />
-            <Text color={"gray.100"} fontFamily={"heading"} fontSize={"3xl"}>
-              Meu Perfil
-            </Text>
-
-            <Logo />
-          </HStack>
-
-          <VStack>
-            <Center>
-              <Image
-                source={require("@assets/nathan.png")}
-                size={"lg"}
-                alt={"ola"}
-                rounded={"full"}
-                resizeMode="cover"
-              />
-
+            <VStack>
               <Text
-                color={"gray.100"}
+                color={"gray.200"}
                 fontFamily={"heading"}
-                fontSize={"xl"}
-                pt={2}
+                fontSize={"md"}
+                textAlign={"center"}
               >
-                Nathan Palatin
+                Membro desde:
               </Text>
               <Text
-                color={"gray.400"}
+                color={"gray.300"}
                 fontFamily={"body"}
-                fontSize={"xl"}
-                pt={2}
+                fontSize={"sm"}
+                textAlign={"center"}
               >
-                Pro Gamer
+                26 de Maio de 2023
               </Text>
-            </Center>
-          </VStack>
-
-          <HStack
-            mt={20}
-            justifyContent={"space-between"}
-            mb={16}
-            px={"6"}
-            alignItems={"center"}
-          >
-            <Text color={"yellow.500"} fontFamily={"heading"} fontSize={"md"}>
-              Membro desde
-            </Text>
-            <Text color={"yellow.500"} fontFamily={"heading"} fontSize={"md"}>
-              Avaliação
-            </Text>
-            <Text color={"yellow.500"} fontFamily={"heading"} fontSize={"md"}>
-              Especialidade
-            </Text>
+            </VStack>
+            <VStack justifyContent={"center"}>
+              <Text
+                color={"gray.200"}
+                fontFamily={"heading"}
+                fontSize={"md"}
+                textAlign={"center"}
+              >
+                Avaliação:
+              </Text>
+              <Text
+                color={"gray.300"}
+                fontFamily={"body"}
+                fontSize={"sm"}
+                textAlign={"center"}
+              >
+                8.6/10
+              </Text>
+            </VStack>
+            <VStack>
+              <Text
+                color={"gray.200"}
+                fontFamily={"heading"}
+                fontSize={"md"}
+                textAlign={"center"}
+              >
+                Nível:
+              </Text>
+              <Text
+                color={"gray.300"}
+                fontFamily={"body"}
+                fontSize={"sm"}
+                textAlign={"center"}
+              >
+                Elite
+              </Text>
+            </VStack>
           </HStack>
 
-          <VStack>
+          <VStack px={"4"}>
             <HStack
               justifyContent={"space-between"}
               alignItems={"center"}
@@ -156,7 +193,6 @@ export function Skin({ navigation }) {
                 /* onPress={(e) => goToPage(e)} */
               />
             </HStack>
-
             <HStack
               justifyContent={"space-between"}
               alignItems={"center"}
@@ -207,32 +243,32 @@ export function Skin({ navigation }) {
                 /* onPress={(e) => goToPage(e)} */
               />
             </HStack>
+            <HStack
+              justifyContent={"space-between"}
+              alignItems={"center"}
+              pl={"6"}
+            >
+              <Icon as={MaterialIcons} name="logout" size={"2xl"} />
+              <Text flex={1} color={"gray.300"} fontSize={"2xl"} pl={6}>
+                Sair
+              </Text>
+              <IconButton
+                icon={<Icon as={Entypo} name="chevron-small-right" />}
+                borderRadius="full"
+                _icon={{
+                  color: "gray.300",
+                  size: "12",
+                }}
+                _hover={{
+                  bg: "orange.600:alpha.20",
+                }}
+                _pressed={{
+                  bg: "gray.600:alpha.20",
+                }}
+                /* onPress={(e) => goToPage(e)} */
+              />
+            </HStack>
           </VStack>
-          <HStack
-            justifyContent={"space-between"}
-            alignItems={"center"}
-            pl={"6"}
-          >
-            <Icon as={MaterialIcons} name="logout" size={"2xl"} />
-            <Text flex={1} color={"gray.300"} fontSize={"2xl"} pl={6}>
-              Sair
-            </Text>
-            <IconButton
-              icon={<Icon as={Entypo} name="chevron-small-right" />}
-              borderRadius="full"
-              _icon={{
-                color: "gray.300",
-                size: "12",
-              }}
-              _hover={{
-                bg: "orange.600:alpha.20",
-              }}
-              _pressed={{
-                bg: "gray.600:alpha.20",
-              }}
-              /* onPress={(e) => goToPage(e)} */
-            />
-          </HStack>
         </ScrollView>
       </ImageBackground>
     </VStack>

@@ -1,4 +1,11 @@
-import { Center, HStack, Image, Text, VStack } from "native-base";
+import {
+  Center,
+  HStack,
+  Image,
+  Text,
+  VStack,
+  Button as Button2,
+} from "native-base";
 
 import { ImageBackground } from "react-native";
 
@@ -9,37 +16,44 @@ import Icone2 from "@assets/icon-home2.png";
 import { Button } from "@components/Button";
 
 export function Home({ navigation }) {
+
+  function aboutUs(){
+    navigation.navigate('aboutus')
+  }
+
   return (
     <VStack flex={1}>
-      <Image
-        w={"full"}
-        h={"56"}
-        source={Icone1}
-        alt="Icon1"
-        position={"absolute"}
-        top={580}
-        left={-50}
-        resizeMode="contain"
-      />
+  
       <ImageBackground
         source={require("@assets/background.png")}
         style={{ flexGrow: 1 }}
         resizeMode="cover"
       >
+            <Image
+        w={"full"}
+        h={"56"}
+        source={Icone1}
+        alt="Icon1"
+        position={"absolute"}
+        top={680}
+        left={-100}
+        resizeMode="contain"
+      />
         <Center pt={`20`}>
           <Logo />
         </Center>
         <VStack flex={1} px={"12"} py={"8"}>
           <HStack justifyContent={"space-between"} mb={16}>
-            <Text color={"#fff"} fontSize={"lg"}>
-              Home
-            </Text>
-            <Text color={"#71808C"} fontSize={"lg"}>
-              Sobre
-            </Text>
-            <Text color={"#71808C"} fontSize={"lg"}>
-              Contato
-            </Text>
+          
+            <Button2 bg={"transparent"}  >
+              <Text color={'gray.100'} fontSize={"lg"}>Home</Text>
+            </Button2>
+            <Button2 bg={"transparent"} onPress={aboutUs}>
+              <Text color={'gray.300'} fontSize={"lg"}>Sobre nós</Text>
+            </Button2>
+            <Button2 bg={"transparent"}  >
+              <Text color={'gray.300'} fontSize={"lg"}>Contato</Text>
+            </Button2>
           </HStack>
           <Text color={"#fff"} fontSize={"xxl"} textAlign={`center`}>
             List de Skins – Todos os Personagens e Roupas!

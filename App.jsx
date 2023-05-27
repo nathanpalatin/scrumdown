@@ -3,21 +3,20 @@ import {
   Outfit_500Medium,
   Outfit_700Bold,
   useFonts,
-} from '@expo-google-fonts/outfit';
+} from "@expo-google-fonts/outfit";
 
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider } from "native-base";
 
-import { AuthContextProvider } from '@contexts/AuthContext';
+import { AuthContextProvider } from "@contexts/AuthContext";
 
-import { Loading } from '@components/Loading';
-import { THEME } from './src/theme';
+import { Loading } from "@components/Loading";
+import { THEME } from "./src/theme";
 
-import { Routes } from '@routes';
+import { Routes } from "@routes";
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     Outfit_400Regular,
     Outfit_500Medium,
@@ -28,7 +27,7 @@ export default function App() {
     <NativeBaseProvider theme={THEME}>
       <StatusBar hidden />
       <AuthContextProvider>
-      {fontsLoaded ? <Routes /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
