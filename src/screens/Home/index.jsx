@@ -1,59 +1,34 @@
-import {
-  Center,
-  HStack,
-  Image,
-  Text,
-  VStack,
-  Button as Button2,
-} from "native-base";
+import { Center, Image, View, Text, VStack } from "native-base";
 
-import { ImageBackground } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
-import Logo from "@assets/logo.svg";
 import Icone1 from "@assets/icon-home1.png";
 import Icone2 from "@assets/icon-home2.png";
 
+import { ImageBackground } from 'react-native'
+
 import { Button } from "@components/Button";
+import { Header } from "@components/Header";
 
 export function Home({ navigation }) {
-  function aboutUs() {
-    navigation.navigate("aboutus");
+  const route = useRoute();
+
+  function startNow(){
+    navigation.navigate('signin')
   }
 
   return (
-    <VStack flex={1}>
-      <Image
-        w={"full"}
-        h={"56"}
-        source={Icone1}
-        alt="Icon1"
-        position={"absolute"}
-        top={680}
-        left={-100}
-        resizeMode="contain"
-      />
-      <Center pt={`20`}>
-        <Logo />
-      </Center>
-      <VStack flex={1} px={"12"} py={"8"}>
-        <HStack justifyContent={"space-between"} mb={16}>
-          <Button2 bg={"transparent"}>
-            <Text color={"gray.100"} fontSize={"lg"}>
-              Home
-            </Text>
-          </Button2>
-          <Button2 bg={"transparent"} onPress={aboutUs}>
-            <Text color={"gray.300"} fontSize={"lg"}>
-              Sobre nós
-            </Text>
-          </Button2>
-          <Button2 bg={"transparent"}>
-            <Text color={"gray.300"} fontSize={"lg"}>
-              Contato
-            </Text>
-          </Button2>
-        </HStack>
-        <Text color={"#fff"} fontSize={"xxl"} textAlign={`center`}>
+    <View flex={1}>
+    <ImageBackground
+    source={require("@assets/background2.png")}
+    style={{ flexGrow: 1 }}
+    resizeMode="cover"
+  > 
+      <VStack flex={1} px={"8"}>
+      
+        <Header navigation={navigation} route={route} />
+
+        <Text color={"#fff"} fontSize={"xxl"} mt={'8'} textAlign={`center`}>
           List de Skins – Todos os Personagens e Roupas!
         </Text>
         <Text color={"#71808C"} fontSize={"xl"} mt={"6"} textAlign={"center"}>
@@ -62,25 +37,36 @@ export function Home({ navigation }) {
         </Text>
         <Center>
           <Button
+         
             title="COMEÇAR AGORA"
-            mt={"100"}
-            fontSize={"21"}
+            mt={"10"}
             variant={"outline"}
-            onPress={() => navigation.navigate("signin")}
+            onPress={(e) => startNow(e)}
           />
         </Center>
-
+        <Image
+          w={"full"}
+          h={"56"}
+          source={Icone1}
+          alt="Icon1"
+          position={"absolute"}
+          top={680}
+          left={-80}
+          resizeMode="contain"
+        />
         <Image
           w={"full"}
           h={"40"}
           source={Icone2}
           alt="Icon2"
           position={"absolute"}
-          top={560}
-          right={-50}
+          top={660}
+          right={-100}
           resizeMode="contain"
         />
       </VStack>
-    </VStack>
+    
+    </ImageBackground>
+  </View>
   );
 }

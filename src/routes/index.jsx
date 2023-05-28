@@ -13,16 +13,12 @@ export function Routes() {
   theme.colors.background = colors.gray[850];
 
   return (
-    <Box flex={1}>
-        <ImageBackground
-        source={require("@assets/background2.png")}
-        style={{ flexGrow: 1 }}
-        resizeMode="cover"
-      > 
+    <Box flex={1} bg={'gray.700'}>
+     
       <NavigationContainer theme={theme}>
         <AuthRoutes />
       </NavigationContainer>
-      </ImageBackground>
+    
     </Box>
   );
 }
