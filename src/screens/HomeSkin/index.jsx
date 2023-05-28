@@ -1,11 +1,15 @@
-import { HStack, ScrollView, Text, Image, VStack, Center } from "native-base";
-import Logo from "@assets/logo-min.svg";
+import { useContext } from 'react'
+import { HStack, ScrollView, Text, Image, VStack, Center } from 'native-base'
 
-import { Char } from '@components/Char'
+import { AuthContext } from '@contexts/AuthContext'
 
-import { ImageBackground } from "react-native";
+import { ImageBackground } from 'react-native'
+import Logo from '@assets/logo-min.svg'
 
 export function HomeSkin() {
+
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <ScrollView>
       <VStack flex={1}>
@@ -34,12 +38,10 @@ export function HomeSkin() {
           style={{ flex: 1 }}
           resizeMode="cover"
         >
-        
-            <Char />
-          
-         
+      
         </ImageBackground>
       </VStack>
+      <Text fontSize={'lg'} fontFamily={'heading'} color={'gray.100'}>Bem-vindo, {user?.name}</Text>
     </ScrollView>
   );
 }

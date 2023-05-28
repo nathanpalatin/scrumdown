@@ -19,7 +19,7 @@ export function Header({ navigation, route }) {
   }
 
   return (
-    <VStack px={"12"} mt={20}>
+    <VStack px={"12"} mt={20} borderBottomColor={'#000'} flexShrink={0}>
       <Center>
         <Logo />
       </Center>

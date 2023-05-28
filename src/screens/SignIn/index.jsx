@@ -8,40 +8,57 @@ import {
   Image,
   HStack,
   IconButton,
-  Icon
-} from "native-base";
+  Icon,
+} from 'native-base'
+
+import { AuthContext } from '@contexts/AuthContext'
+
+import { useNavigation } from '@react-navigation/native'
+
+import { useContext, useState } from 'react'
 
 import { Entypo } from '@expo/vector-icons'
 
-import { ImageBackground } from "react-native";
+import { ImageBackground } from 'react-native'
 
-import Logo from "@assets/logo.svg";
-import Icone1 from "@assets/icon-home1.png";
-import Icone2 from "@assets/icon-home2.png";
+import Logo from '@assets/logo.svg'
+import Icone1 from '@assets/icon-home1.png'
+import Icone2 from '@assets/icon-home2.png'
 
-import { Button } from "@components/Button";
-import { InputForm } from "@components/Input";
+import { Button } from '@components/Button'
+import { InputForm } from '@components/Input'
 
-export function SignIn({ navigation }) {
-  const toast = useToast();
+export function SignIn() {
+
+  const navigation = useNavigation()
+
+  const { login } = useContext(AuthContext)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+/*   const toast = useToast()
+
+  toast.show({
+    placement: "bottom",
+    render: () => {
+      return (
+        <Box bg={"red.500"} px={"12"} py={"4"} w={"full"} rounded="sm">
+          <Text color={"gray.100"} fontFamily={"heading"}>
+            Ops, parece que deu algo errado.
+          </Text>
+        </Box>
+      );
+    },
+  }); */
 
   function goBackHome() {
     navigation.goBack();
   }
 
   function SaveData() {
-    toast.show({
-      placement: "bottom",
-      render: () => {
-        return (
-          <Box bg={"red.500"} px={"12"} py={"4"} w={"full"} rounded="sm">
-            <Text color={"gray.100"} fontFamily={"heading"}>
-              Ops, parece que deu algo errado.
-            </Text>
-          </Box>
-        );
-      },
-    });
+    login(username, password);
+
+    navigation.navigate('homelog');
   }
 
   return (
@@ -55,26 +72,31 @@ export function SignIn({ navigation }) {
           contentContainerStyle={{ flexGrow: 1, paddingTop: 50 }}
           showsVerticalScrollIndicator={false}
         >
-          <HStack justifyContent={'flex-start'}  alignItems={'center'} mb={'10'}>
-          <IconButton
-                icon={<Icon as={Entypo} name="chevron-small-left" />}
-                borderRadius="full"
-                _icon={{
-                  color: "gray.300",
-                  size: "12",
-                }}
-                _hover={{
-                  bg: "orange.600:alpha.20",
-                }}
-                _pressed={{
-                  bg: "gray.600:alpha.20",
-                }}
-                onPress={(e) => goBackHome(e)}
-              />
-            <Text color={"gray.100"} flex={1} textAlign={'center'} fontFamily={"heading"} fontSize={"3xl"}>
+          <HStack justifyContent={"flex-start"} alignItems={"center"} mb={"10"}>
+            <IconButton
+              icon={<Icon as={Entypo} name="chevron-small-left" />}
+              borderRadius="full"
+              _icon={{
+                color: "gray.300",
+                size: "12",
+              }}
+              _hover={{
+                bg: "orange.600:alpha.20",
+              }}
+              _pressed={{
+                bg: "gray.600:alpha.20",
+              }}
+              onPress={(e) => goBackHome(e)}
+            />
+            <Text
+              color={"gray.100"}
+              flex={1}
+              textAlign={"center"}
+              fontFamily={"heading"}
+              fontSize={"3xl"}
+            >
               Acessar minha conta
             </Text>
-           
           </HStack>
           <Image
             source={Icone1}
@@ -83,17 +105,27 @@ export function SignIn({ navigation }) {
             left={"0"}
             alt="Icone flutuante"
           />
-          <Center >
+          <Center>
             <Logo />
           </Center>
           <VStack flex={1} px={"12"} py={"8"}>
             <Center mt={"40"}>
-              <InputForm placeholder="Login" />
-              <InputForm placeholder="Senha" secureTextEntry />
+              <InputForm
+                placeholder="Login"
+                value={username}
+                onChangeText={(e) => setUsername(e)}
+              />
+              <InputForm
+                placeholder="Senha"
+                value={password}
+                onChangeText={(e) => setPassword(e)}
+                secureTextEntry
+              />
               <Button
                 title="ENTRAR"
                 mt={"2"}
                 fontSize={"21"}
+                variant={'outline'}
                 onPress={(e) => SaveData(e)}
               />
               <Image
@@ -103,7 +135,7 @@ export function SignIn({ navigation }) {
                 right={0}
                 alt="Icone flutuante"
               />
-              
+
               <Text onPress={(e) => goBackHome(e)}></Text>
             </Center>
           </VStack>

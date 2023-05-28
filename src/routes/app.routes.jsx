@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useNavigationState } from '@react-navigation/native';
 import { Platform, ImageBackground } from "react-native";
 
 import { Guns } from "@screens/Guns";
 import { SkinList } from "@screens/SkinList";
 import { HomeSkin } from "@screens/HomeSkin";
-import { ProfileSkin } from "@screens/ProfileSkin";
+import { Profile } from "@screens/Profile";
 
 import SkinListSvg from "@assets/skin-list.svg";
 import HomeSkinSvg from "@assets/home-skin.svg";
@@ -32,7 +31,7 @@ export function AppRoutes() {
           left: 0,
           zIndex: 0,
           width: "100%",
-          height: 96, // Defina uma altura fixa aqui
+          height: 96,
         }}
         resizeMode="cover"
       />
@@ -51,7 +50,7 @@ export function AppRoutes() {
         }}
       >
         <Screen
-          name="home"
+          name="homelog"
           component={HomeSkin}
           options={{
             tabBarIcon: ({ color }) => (
@@ -81,7 +80,7 @@ export function AppRoutes() {
 
         <Screen
           name="profile"
-          component={ProfileSkin}
+          component={Profile}
           options={{
             tabBarIcon: ({ color }) => (
               <ProfileSvg fill={color} width={IconSize} height={IconSize} />

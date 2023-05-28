@@ -7,15 +7,29 @@ import {
   Image,
   Icon,
   IconButton,
+  Button,
 } from "native-base";
+
+import { AuthContext } from '@contexts/AuthContext'
+
 import { ImageBackground } from "react-native";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
+
+import { useContext } from "react";
 
 import Logo from "@assets/logo-min.svg";
 
 export function Profile({ navigation }) {
+
+  const { logout } = useContext(AuthContext)
+
   function goBackPage() {
     navigation.navigate("home");
+  }
+
+  function handleLogout() {
+    logout()
+    navigation.navigate("home")
   }
 
   return (
@@ -249,9 +263,11 @@ export function Profile({ navigation }) {
               pl={"6"}
             >
               <Icon as={MaterialIcons} name="logout" size={"2xl"} />
-              <Text flex={1} color={"gray.300"} fontSize={"2xl"} pl={6}>
-                Sair
-              </Text>
+              <Button bg={'transparent'} onPress={handleLogout}>
+                <Text flex={1}  color={"gray.300"} fontSize={"2xl"} pl={6}>
+                  Sair
+                </Text>
+              </Button>
               <IconButton
                 icon={<Icon as={Entypo} name="chevron-small-right" />}
                 borderRadius="full"
