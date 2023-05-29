@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { AppError } from '"@utils/AppError';
+import AppError from '@utils/AppError';
 
 const api = axios.create({
-  baseURL: "http://0.0.0.0:3333",
-});
+  baseURL: 'http://192.168.0.1:3333',
+})
 
 api.interceptors.response.use(
   (response) => response,
@@ -16,3 +16,4 @@ api.interceptors.response.use(
 );
 
 export { api };
+

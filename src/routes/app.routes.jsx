@@ -50,7 +50,7 @@ export function AppRoutes() {
         }}
       >
         <Screen
-          name="homelog"
+          name="homeskin"
           component={HomeSkin}
           options={{
             tabBarIcon: ({ color }) => (

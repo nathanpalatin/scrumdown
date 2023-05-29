@@ -10,6 +10,8 @@ import {
   Button,
 } from "native-base";
 
+/* import { createDrawerNavigator } from '@react-navigation/drawer';
+ */
 import { AuthContext } from '@contexts/AuthContext'
 
 import { ImageBackground } from "react-native";
@@ -22,6 +24,8 @@ import Logo from "@assets/logo-min.svg";
 export function Profile({ navigation }) {
 
   const { logout } = useContext(AuthContext)
+/*  */
+/*   const Drawer = createDrawerNavigator(); */
 
   function goBackPage() {
     navigation.navigate("home");
@@ -39,6 +43,12 @@ export function Profile({ navigation }) {
         style={{ flexGrow: 1 }}
         resizeMode="cover"
       >
+
+{/* <Drawer.Navigator useLegacyImplementation>
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Profile" component={EmptyScreen} />
+      <Stack.Screen name="Settings" component={EmptyScreen} />
+    </Drawer.Navigator> */}
         <HStack
           mt={20}
           justifyContent={"space-between"}

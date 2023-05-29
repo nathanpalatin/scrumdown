@@ -1,19 +1,19 @@
 import {
   Center,
-  Text,
-  VStack,
-  useToast,
-  Box,
-  ScrollView,
-  Image,
   HStack,
-  IconButton,
   Icon,
+  IconButton,
+  Image,
+  ScrollView,
+  Text,
+  VStack
 } from 'native-base'
 
 import { AuthContext } from '@contexts/AuthContext'
 
 import { useNavigation } from '@react-navigation/native'
+
+import { HomeSkin } from '@screens/HomeSkin'
 
 import { useContext, useState } from 'react'
 
@@ -21,44 +21,52 @@ import { Entypo } from '@expo/vector-icons'
 
 import { ImageBackground } from 'react-native'
 
-import Logo from '@assets/logo.svg'
+/* import { api } from '@services/api' */
+/* 
+import signInData from '@services/auth' */
+
 import Icone1 from '@assets/icon-home1.png'
 import Icone2 from '@assets/icon-home2.png'
+import Logo from '@assets/logo.svg'
 
 import { Button } from '@components/Button'
 import { InputForm } from '@components/Input'
 
 export function SignIn() {
 
-  const navigation = useNavigation()
-
+  
   const { login } = useContext(AuthContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
-/*   const toast = useToast()
-
+  
+  /*   const toast = useToast()
+  
   toast.show({
     placement: "bottom",
     render: () => {
       return (
         <Box bg={"red.500"} px={"12"} py={"4"} w={"full"} rounded="sm">
-          <Text color={"gray.100"} fontFamily={"heading"}>
-            Ops, parece que deu algo errado.
-          </Text>
+        <Text color={"gray.100"} fontFamily={"heading"}>
+        Ops, parece que deu algo errado.
+        </Text>
         </Box>
-      );
-    },
-  }); */
-
-  function goBackHome() {
+        );
+      },
+    }); */
+    
+    function goBackHome() {
     navigation.goBack();
   }
+  
+  const navigation = useNavigation()
+  
+  async function handleSignIn() {
+    
+    const response = await login(username, password)
 
-  function SaveData() {
-    login(username, password);
+    console.log(response)
 
-    navigation.navigate('homelog');
+    navigation.navigate('homeskin');
   }
 
   return (
@@ -95,7 +103,7 @@ export function SignIn() {
               fontFamily={"heading"}
               fontSize={"3xl"}
             >
-              Acessar minha conta
+            
             </Text>
           </HStack>
           <Image
@@ -124,9 +132,8 @@ export function SignIn() {
               <Button
                 title="ENTRAR"
                 mt={"2"}
-                fontSize={"21"}
                 variant={'outline'}
-                onPress={(e) => SaveData(e)}
+                onPress={handleSignIn}
               />
               <Image
                 source={Icone2}

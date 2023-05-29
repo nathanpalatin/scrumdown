@@ -3,19 +3,21 @@ import {
   Outfit_500Medium,
   Outfit_700Bold,
   useFonts,
-} from '@expo-google-fonts/outfit'
+} from '@expo-google-fonts/outfit';
 
-import { StatusBar } from 'expo-status-bar'
+import 'react-native-gesture-handler';
 
-import { NativeBaseProvider } from 'native-base'
+import { StatusBar } from 'expo-status-bar';
 
-import { AuthContextProvider } from '@contexts/AuthContext'
+import { NativeBaseProvider } from 'native-base';
 
-import { Loading } from '@components/Loading'
+import { AuthContextProvider } from '@contexts/AuthContext';
 
-import { THEME } from './src/theme'
+import { Loading } from '@components/Loading';
 
-import { Routes } from '@routes'
+import { THEME } from './src/theme';
+
+import { Routes } from '@routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

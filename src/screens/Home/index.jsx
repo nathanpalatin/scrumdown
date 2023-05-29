@@ -37,9 +37,9 @@ export function Home({ navigation }) {
         </Text>
         <Center>
           <Button
-         
             title="COMEÇAR AGORA"
             mt={"10"}
+            w={'3xs'}
             variant={"outline"}
             onPress={(e) => startNow(e)}
           />

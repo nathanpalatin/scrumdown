@@ -16,7 +16,7 @@ export function AuthRoutes() {
 
     <Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: false
       }}
     >
       <Screen name="home" component={Home} />

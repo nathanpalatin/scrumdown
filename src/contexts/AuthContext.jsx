@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const AuthContext = createContext();
 
@@ -11,8 +11,8 @@ export function AuthContextProvider({ children }) {
     if (username === 'nath.palatin' && password === 'senha123') {
       setUser({
         id: '1',
-        name: 'Nathan',
-        email: 'nath.palatin@gmail.com',
+        name: 'Nathan Palatin',
+        email: 'nathan@scrumdown.com',
         avatar: 'profile.png'
       });
     }
